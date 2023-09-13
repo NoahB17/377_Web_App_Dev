@@ -1,0 +1,23 @@
+body {
+    background-color: lightblue;
+  }
+  
+
+  
+  p {
+    font-family: verdana;
+    font-size: 20px;
+  }
+  #title{
+    color: white;
+    text-align: center;
+  }
+
+.home{
+  background-color:blue;
+  color: white;
+}
+
+  .away{
+    background-color: yellow;
+  }
