@@ -1,0 +1,30 @@
+<html>
+<script>
+    function calculate(){
+        var height= document.forms[0].elements['height'].value;
+        var width= document.forms[0].elements['width'].value;
+
+        var area= height*width;
+        var parimeter= 2 * height + 2 * width
+        document.getElementById('results').innerHTML= '<table>'+
+            '<tr>'+"<td>Area</td>"+
+                '<td>'+area+'</td>'+
+                '</tr>' +
+                '<table>'+'<tr>'+"<td>Parimeter</td>"+
+            '<td>'+parimeter+'</td>'+'</tr>';
+    }
+</script>
+
+    <h1>rectangle</h1>
+
+    <form>
+   height: <input name="height" type="text">
+    <br>
+    width:<input name="width" type="text">
+ 
+<br>
+<div id="results">area & parimeter will appear here</div>
+<br>
+<input value="calculate" type="button" onclick="calculate()">
+</form>
+</html>

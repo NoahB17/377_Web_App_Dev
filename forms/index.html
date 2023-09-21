@@ -1,0 +1,81 @@
+<html>
+    <body>
+        <head>
+            <script>
+                function login(){
+                    alert('Access Denied!')
+                }
+
+                function register(){
+                    var username = document.forms[1].elements['username'].value;
+                    if (username==""){
+                        alert('username needed')
+                    }else{
+                        alert('success')
+                    }
+
+                    var terms = document.forms[1].elements['agreement'].checked;
+                    if(!terms){
+                        alert("you must agree to the terms of service")
+                    }
+                }
+            </script>
+        </head>
+        <h1>Form Examples</h1>
+        <h2>Login Form Example</h2>
+        <form>
+            Username:<input name="username" type="text" placeholder="enter your username">
+            <br>
+            Password: <input name="password" type="password" placeholder="enter your password">
+            <br>
+            <input value="Login" type="button" onclick='login()'>
+        </form>
+
+        <h2>User Registration Form</h2>
+
+        <form>
+            First Name: <input name="firstname" type="text">
+            <br>
+            Last Name: <input name="lastname" type="text">
+            <br>
+            Username:<input name="username" type="text" placeholder="enter your username">
+            <br>
+            <br>
+            I am a...
+            <br>
+            <input id="student" name="usertype" type="radio" value="student">
+            <label for="student">Student</label>
+            <br>
+            
+            <input id="teacher" name="usertype" type="radio" value="teacher">
+            <label for="teacher">Teacher</label><br>
+            
+          
+            select your school:<br>
+            <select >
+                
+                <option value="">Cedar</option>
+                <option value="">Center</option>
+                <option value="">HMS</option>
+                <option value="">HHS</option>
+            </select>
+            <br>
+
+            <input id="agree" name="agreement" type="checkbox">
+            <label for="agree">I agree to the terms of service...</label>
+            <br>
+
+            date of birth
+            <input name="date" type="date">
+            <br>
+            email
+            <input name="email" type="email">
+            <br>
+            phone number
+            <input name="phonenum" type="tel">
+            <br>
+            <input value="Create Account" type="button" onclick='register()'>
+
+        </form>
+    </body>
+</html>
