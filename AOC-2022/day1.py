@@ -1,22 +1,20 @@
 file = open('day1.txt', 'r')
 lines = file.readlines()
 total = 0
-highest=0
-second=0
-third=0
+totals=[]
 for line in lines:
     line=line.strip()
 
     if line=='':
         print('New Elf')
         print('last elf was carrying'+ str(total))
-        if total>highest:
-            highest=total
-        
+        totals.append(total)
         total=0
+        
     else:
         total+= int(line)
-
+print('New Elf')
 print('last elf was carrying'+ str(total))
-
-print(highest)
+totals.append(total)
+totals.sort(reverse=True)
+print("top 3: "+str(totals[0] + totals[1] + totals[2]))
