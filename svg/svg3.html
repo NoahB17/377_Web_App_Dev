@@ -1,0 +1,37 @@
+<html>
+
+<body>
+<h1>SVG lesson 3</h1>
+
+<svg width="500" height="500" style="border: solid 1px black ">
+   
+    <rect width="50" height="50"/>
+
+    <!-- translation examples -->
+    
+    <rect width="50" height="50" transform="translate(60)" fill="red"/>
+    <rect width="50" height="50" transform="translate(60,60)" fill="blue"/>
+    <rect width="50" height="50" transform="translate(0,60)" fill="green"/>
+
+    
+    <!--scale examples-->
+
+    <rect width="50" height="50" transform="translate(200,200) scale(0.5 3)" fill="orange"/>
+
+
+    <!--rotation examples-->
+    <rect width="50" height="50" x="0" y="300"/>
+    <rect width="50" height="50" x="0" y="300" fill="pink" transform="rotate(-45)"/>
+    <rect width="50" height="50" x="0" y="300" fill="purple" transform="rotate(-45 25,325)"/>
+
+
+    <!--skew examples-->
+    <rect width="50" height="50" x="300" y="100" fill="magenta"/>
+    <rect width="50" height="50" x="300" y="100" fill="grey" transform="skewX(30)"/>
+    <rect width="50" height="50" x="300" y="100" fill="brown" transform="skewY(30)"/>
+
+    <text x="50" y="400" transform="scale(1.1)">hanover high school</text>
+
+</svg>
+</body>
+</html>
