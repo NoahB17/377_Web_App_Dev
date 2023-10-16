@@ -13,7 +13,6 @@ for line in lines:
     
     print(line)
     print(compartment_1)
-
     for letter in compartment_1:
         if letter in compartment_2:
             print("found duplicate "+ letter)
