@@ -12,20 +12,19 @@
 
     <body>
 
+        
         <h1>Black Jack</h1>
 
         <svg width="500" height="500">
             <rect id="background" x="0" y="0" width="500" height="500" />
-            <!-- <image href="fronts/clubs_2.svg"></image> -->
+            <image  href="fronts/red2.svg" x="175" y="180" width="150" height="150" ></image>
+            <image id="cardyou" class=""href="fronts/clubs_2.svg" x="175" y="400" width="150" height="150" ></image>
+            <image id="cardcomp" href="fronts/clubs_2.svg" x="175" y="-50" width="150" height="150" ></image>
 
-            <g transform="translate(100, 100)">
-                </g>
+            <text id="totalyou" x="250" y="360">0</text>
+            <text id="totalcomp" x="250" y="160">0</text>
 
-            <g transform="translate(300, 100)">
-                </g>
-
-
-            <text id="message" x="250" y="370"></text>
+            <text id="message" x="250" y="500"></text>
 
         </svg>
 
@@ -34,8 +33,19 @@
             <span class="spacer"></span>
             Bet: <input type="text" id="bet" name="bet" size="5" />
             <span class="spacer"></span>
-            <button onclick="rollDice()">Roll the Dice!</button>
+            <button onclick="drawCard()">draw card</button>
+            <button onclick="noDraw()">stop</button>
+
         </div>
+
+        <h2>Rules</h2>
+        <text>1.put in a starting bet must be more than $5</text>
+        <br>
+        <text>2.draw cards and try to beat the dealer</text>
+        <br>
+        <text>3.dealer wont draw cards if over 16</text>
+        <br>
+        <text>4.closest to 21 without going over wins </text>
 
     </body>
 </html>

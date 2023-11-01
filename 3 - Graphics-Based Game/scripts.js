@@ -1,31 +1,74 @@
 var MINIMUM_BET = 5;
 var STARTING_FUNDS = 50;
-
 var point = 0;
 var bet = 0;
 var winnings = STARTING_FUNDS;
+var totalyou=0
+var totalcomp=0
+var total=0
 
+const suits = ["spades", "diamonds", "clubs", "hearts"];
+const values = [
+  "ace",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9",
+  "10",
+  "jack",
+  "queen",
+  "king",
+];
+
+// empty array to contain cards
+let deck = [];
+
+// create a deck of cards
+for (let i = 0; i < suits.length; i++) {
+    for (let x = 0; x < values.length; x++) {
+        let card = { Value: values[x], Suit: suits[i] };
+        deck.push(card);
+    }
+}
+
+// shuffle the cards
+for (let i = deck.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * i);
+    let temp = deck[i];
+    deck[i] = deck[j];
+    deck[j] = temp;
+    
+}
+
+console.log('The shuffled deck:');
+
+for (let i = 0; i < 52; i++) {
+    console.log(`${deck[i].Value} of ${deck[i].Suit}`)
+    console.log(deck[i].Value)
+    console.log("fronts/"+deck[0].Suit+"_"+deck[0].Value+".svg")
+}
 /*
  * Checks the result of the current roll and declare a win, loss, or continuation.
  */
-function checkRoll(roll) {
-    if (point == 0) { // New round
-        if (roll == 7 || roll == 11) {
+function checkCards(you,dealer) {
+        if (you == 21 || you > dealer && you<=21||dealer>=22) {
             endRound(true);
-        } else if (roll == 2 || roll == 3 || roll == 12) {
+            totalyou=0
+            totalcomp=0
+        } else if (dealer == 21 || dealer > you && dealer<=21||you>=22) {
             endRound(false);
-        } else {
-            $("#point").text(roll);
-            point = roll;
+            totalyou=0
+            totalcomp=0
+        } else if (dealer == you){
+            $("#message").text("its a tie!");
+            totalyou=0
+            totalcomp=0
         }
-    } else { // Existing round
-        if (roll == point) {
-            endRound(true);
-        } else if (roll == 7) {
-            endRound(false);
-        }
-    }
-}
+    } 
 
 /*
  * Ends the current round of play by either adding/removing the bet to/from the winnings. Also
@@ -46,7 +89,7 @@ function endRound(win) {
     console.log("Winnings: " + winnings);
 
     // Step 2: Reset game controls for another round
-    $("#point").text("X");
+    
     $("#bet").val("");
     $("#bet").prop("disabled", false);
     $("#winnings").text("$" + winnings);
@@ -58,17 +101,30 @@ function endRound(win) {
 /*
  * Rolls both dice at the same time and checks the results.
  */
-function rollDice() {
+
+ace=1
+jack=11
+queen=12
+king=13
+function drawCard() {
+    
+   draw(deck[0].Value,"you")
+   console.log("Total: " + total);
+   console.log(totalyou);
+   if(totalcomp<=16){
+    draw(deck[0].Value,"comp")
+    console.log(totalyou);
+
+   }
+
+    // $("#" + card + " ~ .pip").css("visibility", "hidden");
     if (point > 0 || validateBet()) {
         $("#message").text("");
-
-        var roll1 = rollDie("d1");
-        var roll2 = rollDie("d2");
-        var total = roll1 + roll2;
+        
+        
 
         console.log("Total: " + total);
 
-        checkRoll(total);
     } else {
         if (winnings < MINIMUM_BET) {
             $("#message").text("You don't have enough money to play");
@@ -77,51 +133,51 @@ function rollDice() {
         }
     }
 }
+function noDraw() {
+    while(totalcomp<=16){
+        draw(deck[0].Value,"comp")
 
-/*
- * Rolls the given die which updates the pips and returns the number rolled.
- *
- * dieNum - the ID of the die to roll
- */
-function rollDie(dieNum) {
-    // Step 1: hide every pip
-    $("#" + dieNum + " ~ .pip").css("visibility", "hidden");
-
-    // Step 2: generate a random number between 1 and 6 (inclusive)
-    var roll = Math.ceil(Math.random() * 6);
-    console.log(dieNum + ": " + roll);
-
-    // Step 3: show the appropriate pips based on the roll
-    if (roll == 1) {
-        $("#" + dieNum + "p4").css("visibility", "visible");
-    } else if (roll == 2) {
-        $("#" + dieNum + "p1").css("visibility", "visible");
-        $("#" + dieNum + "p7").css("visibility", "visible");
-    } else if (roll == 3) {
-        $("#" + dieNum + "p1").css("visibility", "visible");
-        $("#" + dieNum + "p4").css("visibility", "visible");
-        $("#" + dieNum + "p7").css("visibility", "visible");
-    } else if (roll == 4) {
-        $("#" + dieNum + "p1").css("visibility", "visible");
-        $("#" + dieNum + "p3").css("visibility", "visible");
-        $("#" + dieNum + "p5").css("visibility", "visible");
-        $("#" + dieNum + "p7").css("visibility", "visible");
-    } else if (roll == 5) {
-        $("#" + dieNum + "p1").css("visibility", "visible");
-        $("#" + dieNum + "p3").css("visibility", "visible");
-        $("#" + dieNum + "p4").css("visibility", "visible");
-        $("#" + dieNum + "p5").css("visibility", "visible");
-        $("#" + dieNum + "p7").css("visibility", "visible");
-    } else  { // roll == 6
-        $("#" + dieNum + "p1").css("visibility", "visible");
-        $("#" + dieNum + "p2").css("visibility", "visible");
-        $("#" + dieNum + "p3").css("visibility", "visible");
-        $("#" + dieNum + "p5").css("visibility", "visible");
-        $("#" + dieNum + "p6").css("visibility", "visible");
-        $("#" + dieNum + "p7").css("visibility", "visible");
     }
+    checkCards(totalyou,totalcomp);
 
-    return roll;
+}
+function draw(cardnum,player) {
+    total=0
+    console.log(cardnum);
+    $("#card"+player).attr("href","fronts/"+deck[0].Suit+"_"+deck[0].Value+".svg")
+
+        if (cardnum=="ace"){
+            total+=Number(1)
+            console.log(total);
+
+        }else if(cardnum=="jack"){
+            total+=Number(11)
+            console.log(total);
+
+        }else if(deck[0].Value=="queen"){
+            total+=Number(12)
+            console.log(total);
+
+        }else if(cardnum=="king"){
+            total+=Number(13)
+            console.log(total);
+
+        }else{
+        total+=Number(cardnum)
+            }
+        if(player=="you"){
+            totalyou+=total
+            $("#total"+player).text(totalyou);
+        } else if(player=="comp"){
+            totalcomp+=total
+            $("#total"+player).text(totalcomp);
+        }
+        console.log(deck[0].Value);
+        
+
+        deck.shift();
+        
+
 }
 
 /*
