@@ -17,7 +17,7 @@ input, button {
 }
 
 #message {
-    fill: green;
+    fill: black;
     font-size: 18pt;
     text-anchor: middle;
 }

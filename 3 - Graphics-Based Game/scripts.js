@@ -51,9 +51,7 @@ for (let i = 0; i < 52; i++) {
     console.log(deck[i].Value)
     console.log("fronts/"+deck[0].Suit+"_"+deck[0].Value+".svg")
 }
-/*
- * Checks the result of the current roll and declare a win, loss, or continuation.
- */
+
 function checkCards(you,dealer) {
         if (you == 21 || you > dealer && you<=21||dealer>=22) {
             endRound(true);
@@ -144,40 +142,41 @@ function noDraw() {
 function draw(cardnum,player) {
     total=0
     console.log(cardnum);
-    $("#card"+player).attr("href","fronts/"+deck[0].Suit+"_"+deck[0].Value+".svg")
+    if (validateBet()) {
+        $("#card"+player).attr("href","fronts/"+deck[0].Suit+"_"+deck[0].Value+".svg")
 
-        if (cardnum=="ace"){
-            total+=Number(1)
-            console.log(total);
+            if (cardnum=="ace"){
+                total+=Number(1)
+                console.log(total);
 
-        }else if(cardnum=="jack"){
-            total+=Number(11)
-            console.log(total);
+            }else if(cardnum=="jack"){
+                total+=Number(11)
+                console.log(total);
 
-        }else if(deck[0].Value=="queen"){
-            total+=Number(12)
-            console.log(total);
+            }else if(deck[0].Value=="queen"){
+                total+=Number(12)
+                console.log(total);
 
-        }else if(cardnum=="king"){
-            total+=Number(13)
-            console.log(total);
+            }else if(cardnum=="king"){
+                total+=Number(13)
+                console.log(total);
 
-        }else{
-        total+=Number(cardnum)
+            }else{
+            total+=Number(cardnum)
+                }
+            if(player=="you"){
+                totalyou+=total
+                $("#total"+player).text(totalyou);
+            } else if(player=="comp"){
+                totalcomp+=total
+                $("#total"+player).text(totalcomp);
             }
-        if(player=="you"){
-            totalyou+=total
-            $("#total"+player).text(totalyou);
-        } else if(player=="comp"){
-            totalcomp+=total
-            $("#total"+player).text(totalcomp);
-        }
-        console.log(deck[0].Value);
-        
+            console.log(deck[0].Value);
+            
 
-        deck.shift();
+            deck.shift();
         
-
+    }
 }
 
 /*
