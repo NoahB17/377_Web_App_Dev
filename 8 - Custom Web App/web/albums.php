@@ -34,6 +34,8 @@ while($row=$result->fetch_assoc())
     echo"<td>".$row["album_genre"]."</td>";
     echo"<td>".$row["album_spotify"]."</td>";
     echo"<td>".$row["album_explicit"]."</td>";
+    echo '<td>'.$row['album_length'] . '</td>';
+    echo '<td>'.$row['album_features'] . '</td>';
 
     echo"</tr>";
 

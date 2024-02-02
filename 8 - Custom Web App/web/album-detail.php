@@ -7,6 +7,8 @@ $artist='';
 $songnum='';
 $spotify='';
 $explicit='';
+$features='';
+$length='';
 if (isset($id))
 {
     $connection = get_database_connection();
@@ -27,6 +29,9 @@ if (isset($id))
     $songnum= $row['album_song_num'];
     $spotify= $row['album_spotify'];
     $explicit= $row['album_explicit'];
+    $features= $row['album_features'];
+    $length= $row['album_length'];
+   
 
     
 }
@@ -47,6 +52,10 @@ if (isset($id))
         <input type="text" class="form-control" id="artist" name="artist" value="<?php echo $artist ?>" />
     </div>
 
+    <div class="mb-3">
+        <label for="features" class="form-label">Features</label>
+        <input type="text" class="form-control" id="features" name="features" value="<?php echo $features ?>" />
+    </div>
 
 
     <div class="mb-3">
@@ -58,6 +67,11 @@ if (isset($id))
     <div class="mb-3">
         <label for="Year" class="form-label">Date</label>
         <input type="text" class="form-control" id="year" name="year" value="<?php echo $year ?>" />
+    </div>
+
+    <div class="mb-3">
+        <label for="length" class="form-label">Length of album</label>
+        <input type="text" class="form-control" id="length" name="length" value="<?php echo $length ?>" />
     </div>
 
 
@@ -98,6 +112,8 @@ if (isset($id))
         }
     }
 
+
     </script>
 <?php } ?>
 </form>
+

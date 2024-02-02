@@ -14,8 +14,11 @@
             <br/>
             Artist: <input type="text" name="artist"/>
             <br/>
-            
+            Features: <input type="text" name="features"/>
+            <br/>
             Date: <input type="text" name="year"/>
+            <br/>
+            length: <input type="text" name="length"/>
             <br/>
             Genre: <input type="text" name="genre"/>
             <br/>
