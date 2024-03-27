@@ -1,0 +1,87 @@
+<svg id="puzzle9" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 580">
+
+  <!-- defs -->
+  <defs>
+    <radialGradient id="rg-0" cx="50%" cy="50%" r="50%" fx="40%" fy="40%">
+      <stop offset="0%" stop-color="#ecf0e7"/>
+      <stop offset="90%" stop-color="#D3D7CF"/>
+    </radialGradient>
+
+    <pattern id="pttrn-0" x="0" y="0" width="24" height="24" patternUnits="objectBoundingBox">
+      <polyline points="8.5,8.5 16.5,16.5" stroke="#e85757" stroke-width="1" fill="none"/>
+      <polyline points="8.5,16.5 16.5,8.5" stroke="#e85757" stroke-width="1" fill="none"/>
+    </pattern>
+
+  </defs>
+
+  <!-- symbols -->
+  <symbol id="pdc-clock">
+    <circle id="face-overide" cx="0" cy="0" r="45" stroke="#80827f" stroke-width="1.5" fill="url(#rg-0)"/>
+    <line x1="36" y1="0" x2="41" y2="0" stroke="#555753"/>
+    <line x1="31" y1="18" x2="36" y2="21" stroke="#555753"/>
+    <line x1="21" y1="36" x2="18" y2="31" stroke="#555753"/>
+    <line x1="0" y1="36" x2="0" y2="41" stroke="#555753"/>
+    <line x1="-21" y1="36" x2="-18" y2="31" stroke="#555753"/>
+    <line x1="-31" y1="18" x2="-36" y2="21" stroke="#555753"/>
+    <line x1="-41" y1="0" x2="-36" y2="0" stroke="#555753"/>
+    <line x1="-31" y1="-18" x2="-36" y2="-21" stroke="#555753"/>
+    <line x1="-21" y1="-36" x2="-18" y2="-31" stroke="#555753"/>
+    <line x1="21" y1="-36" x2="18" y2="-31" stroke="#555753"/>
+    <line x1="31" y1="-18" x2="36" y2="-21" stroke="#555753"/>
+    <line x1="0" y1="-36" x2="0" y2="-41" stroke="#555753" />
+    <line id="hour" x1="0" y1="0" x2="0" y2="-25" />
+    <line id="min" x1="0" y1="0" x2="0" y2="-35" />
+    <line id="sec" x1="0" y1="0" x2="0" y2="-40" />
+    <circle id="dot" cx="0" cy="0" r="2.5"/>
+  </symbol>
+
+  <symbol id="sym-btn-0">
+    <rect x="-100" y="-10" width="200" height="22" rx="5" ry="4" class="blankbtn"/>
+    <text id="txt-btn-0" x="-1" y="5" class="tx12 fnavy txc">Start when you are ready.</text>
+  </symbol>
+
+  <symbol id="nonogram0"><!-- Elements added programmatically --></symbol>
+  <symbol id="nonogram1"><!-- Elements added programmatically --></symbol>
+  <symbol id="nonogram2"><!-- Elements added programmatically --></symbol>
+
+  <!-- Entire puzzle in a group element, in case we want to move or hide it -->
+  <g id="svg-content">
+    <rect x="0" y="0" width="1000" height="580" stroke="#6e8196" fill="none"/>
+
+    <use id="btn-start" class="clickable" onclick="btnStartClicked(evt)" href="#sym-btn-0" x="810" y="530" visibility="visible" />
+
+    <text id="txt-00" x="985" y="25" class="tx12 f01 txe">Puzzle 9: Trio of Nonograms</text>
+    <text id="txt-01" x="35" y="40" class="tx24 fbluedark txs">Welcome to Nonogram Manor</text>
+    <text id="txt-02" x="55" y="75" class="tx16 f04 txs">Nonograms are deceptively simple logic puzzles. You need to complete three puzzles of increasing difficulty. </text>
+    
+    <text id="txt-03" x="70" y="110" class="tx15 f05 txs">The numbers outside the grid indicate how to fill in a pattern of squares to generate a mysterious pixel-like image.</text>
+    <text id="txt-04" x="70" y="130" class="tx14 f05 txs">To get you started, Mr. Pi has provided a partially completed sample grid.</text>
+    
+    <text id="txt-05" x="70" y="170" class="tx14 f04 txs">Helpful hints:</text>
+    <text id="txt-06" x="80" y="195" class="tx14 f05 txs">&#8226; The digits next to a row or column indicate the number of filled-in block-segments needed in that row or column.</text>
+    <text id="txt-07" x="80" y="220" class="tx14 f05 txs">&#8226; There must be at least one empty block between segments of filled-in blocks.</text>
+    <text id="txt-08" x="80" y="245" class="tx14 f05 txs">&#8226; If you are certain a particular a block must be empty, you can indicate that with a red x.</text>
+    
+    <text id="txt-09" x="70" y="285" class="tx14 f04 txs">Logic used for the sample grid:</text>
+    <text id="txt-10" x="80" y="310" class="tx14 f05 txs">&#8226; Notice the 3-1-4-row is complete since block-segments must have spaces between them.</text>
+    <text id="txt-11" x="80" y="335" class="tx14 f05 txs">&#8226; The 1-column is complete since its only block was already filled in by the 3-1-4-row.</text>
+    <text id="txt-12" x="80" y="360" class="tx14 f05 txs">&#8226; The last two blocks in the 7-row are empty, since the block only fits to left of the 1-column.</text>
+    <text id="txt-13" x="80" y="385" class="tx14 f05 txs">&#8226; The 5-column is partially complete as we know its only block cannot fit above the 3-1-4 row.</text>
+    <text id="txt-14" x="80" y="410" class="tx14 f05 txs">&#8226; The 1-1-4-column is partially complete since the 4-block must be below the two 1-blocks.</text>
+    
+    <text id="txt-15" x="1150" y="440" class="tx14 f09 txs">Incognito Bruce</text>
+    <text id="txt-16" x="1450" y="90" class="tx16 f09 txc">Mr. Pi can clearly see that you are no Joker!</text>
+    <text id="txt-17" x="1450" y="115" class="tx16 f01 txc">Click the clock. It's time to move on.</text>
+    
+    <text id="txt-21" x="910" y="480" class="f08 tx14 txi txe"></text>
+
+    <image id="nonogram-sample" x="900" y="300" xlink:href="challenges/2024/png/nonogram-example.png" transform="scale(0.75)"/>
+    
+    <use id="nonogroup0" xlink:href="#nonogram0" x="0" y="0" />
+    <use id="nonogroup1" xlink:href="#nonogram1" x="0" y="0" />
+    <use id="nonogroup2" xlink:href="#nonogram2" x="0" y="0" />
+
+    <!-- Display the clock after the user solves the puzzle -->
+    <use id="main-clock" class="clickable" onclick="clockClicked(evt)" href="#pdc-clock" x="1200" y="280" />
+  </g>
+</svg>

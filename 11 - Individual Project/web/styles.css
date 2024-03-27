@@ -1,0 +1,21 @@
+#game-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 50px);
+    grid-template-rows: repeat(8, 50px);
+    gap: 2px;
+    margin: 20px auto;
+  }
+  
+  .gem {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  #score {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 20px;
+  }
+  
