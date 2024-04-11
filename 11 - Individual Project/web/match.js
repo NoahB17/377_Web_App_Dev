@@ -4,6 +4,7 @@ const GEM_TYPES = ['red', 'blue', 'green', 'yellow','purple','pink'];
 const SCORE_PER_GEM = 10;
 
 let score = 0;
+let foundMatch = false;
 
 const grid = document.getElementById('game-grid');
 
@@ -11,50 +12,51 @@ let selectedGem = null;
 
 // Create initial grid
 function createGrid() {
-   // Create a temporary grid to check for initial matches
-   let tempGrid = [];
-   for (let row = 0; row < GRID_HEIGHT; row++) {
-       tempGrid[row] = [];
-       for (let col = 0; col < GRID_WIDTH; col++) {
-           tempGrid[row][col] = getRandomGemType(row, col);
-       }
-   }
+        // Create a temporary grid to check for initial matches
+        
+        let tempGrid = [];
+        for (let row = 0; row < GRID_HEIGHT; row++) {
+            tempGrid[row] = [];
+            for (let col = 0; col < GRID_WIDTH; col++) {
+                tempGrid[row][col] = getRandomGemType(row, col);
+            }
+        }
 
-   // Check for initial matches and swap colors if needed
-   let matched = true;
-   while (matched) {
-       matched = false;
-       for (let row = 0; row < GRID_HEIGHT; row++) {
-           for (let col = 0; col < GRID_WIDTH; col++) {
-               if (checkInitialMatches(tempGrid, row, col)) {
-                   matched = true;
-                   const temp = tempGrid[row][col];
-                   tempGrid[row][col] = tempGrid[row][col + 1];
-                   tempGrid[row][col + 1] = temp;
-               }
-               if (checkInitialMatches(tempGrid, row, col)) {
-                   matched = true;
-                   const temp = tempGrid[row][col];
-                   tempGrid[row][col] = tempGrid[row + 1][col];
-                   tempGrid[row + 1][col] = temp;
-               }
-           }
-       }
-  }
+        // Check for initial matches and swap colors if needed
+        let matched = true;
+        while (matched) {
+            matched = false;
+            for (let row = 0; row < GRID_HEIGHT; row++) {
+                for (let col = 0; col < GRID_WIDTH; col++) {
+                    if (checkInitialMatches(tempGrid, row, col)) {
+                        matched = true;
+                        const temp = tempGrid[row][col];
+                        tempGrid[row][col] = tempGrid[row][col + 1];
+                        tempGrid[row][col + 1] = temp;
+                    }
+                    if (checkInitialMatches(tempGrid, row, col)) {
+                        matched = true;
+                        const temp = tempGrid[row][col];
+                        tempGrid[row][col] = tempGrid[row + 1][col];
+                        tempGrid[row + 1][col] = temp;
+                    }
+                }
+            }
+        }
 
-   // Create gems in the actual grid using the finalized colors
-   for (let row = 0; row < GRID_HEIGHT; row++) {
-       for (let col = 0; col < GRID_WIDTH; col++) {
-           const gem = document.createElement('div');
-           gem.classList.add('gem');
-           gem.dataset.row = row;
-           gem.dataset.col = col;
-           gem.dataset.type = tempGrid[row][col];
-           gem.style.backgroundColor = tempGrid[row][col];
-           gem.addEventListener('click', () => selectGem(gem));
-           grid.appendChild(gem);
-       }
-   }
+        // Create gems in the actual grid using the finalized colors
+        for (let row = 0; row < GRID_HEIGHT; row++) {
+            for (let col = 0; col < GRID_WIDTH; col++) {
+                const gem = document.createElement('div');
+                gem.classList.add('gem');
+                gem.dataset.row = row;
+                gem.dataset.col = col;
+                gem.dataset.type = tempGrid[row][col];
+                gem.style.backgroundColor = tempGrid[row][col];
+                gem.addEventListener('click', () => selectGem(gem));
+                grid.appendChild(gem);
+            }
+        }
 }
 
 // Check for initial matches
@@ -95,6 +97,7 @@ function swapGems(gem1, gem2) {
     // If there's a match, update score and grid
     updateScore();
     updateGrid();
+    
 } 
 //else {
 //     // If no match, swap back
@@ -107,7 +110,6 @@ function swapGems(gem1, gem2) {
 }
 
 function checkForMatches() {
-    let foundMatch = false;
   
     // Check for horizontal matches
     for (let row = 0; row < GRID_HEIGHT; row++) {
@@ -158,6 +160,7 @@ function updateGrid() {
             score += SCORE_PER_GEM;
             document.getElementById('score-value').innerText = score;
         }
+
     });
 
     // Count the total number of gems
@@ -179,5 +182,6 @@ function updateGrid() {
     // Clear matched data attribute
     gems.forEach(gem => delete gem.dataset.matched);
 }
-// Initialize the game
+// Initialize the game  
+
 createGrid();
