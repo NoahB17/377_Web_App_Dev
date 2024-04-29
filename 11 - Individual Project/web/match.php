@@ -15,5 +15,21 @@
   <div id="game-grid" ></div>
   <div id="score">Score: <span id="score-value">0</span></div>
   <script src="match.js"></script>
+
+<?php
+$connection = get_database_connection();
+$sql = '';
+if ( )
+{
+    $sql =<<<SQL
+    UPDATE high_score
+       SET  player_score
+     WHERE album_id = $id
+    SQL;
+}
+
+?>
 </body>
+
+
 </html>

@@ -2,7 +2,7 @@ const GRID_WIDTH = 8;
 const GRID_HEIGHT = 8;
 const GEM_TYPES = ['red', 'blue', 'green', 'yellow','purple','pink'];
 const SCORE_PER_GEM = 10;
-
+let matches = 0;
 let score = 0;
 let foundMatch = false;
 
@@ -99,7 +99,7 @@ function swapGems(gem1, gem2) {
     updateGrid();
     
 } 
-//else {
+// else {
 //     // If no match, swap back
 //     tempType = gem1.dataset.type;
 //     gem1.dataset.type = gem2.dataset.type;
@@ -110,7 +110,7 @@ function swapGems(gem1, gem2) {
 }
 
 function checkForMatches() {
-  
+    foundMatch = false;
     // Check for horizontal matches
     for (let row = 0; row < GRID_HEIGHT; row++) {
       for (let col = 0; col < GRID_WIDTH - 2; col++) {
@@ -123,6 +123,9 @@ function checkForMatches() {
           gem2.dataset.matched = true;
           gem3.dataset.matched = true;
           foundMatch = true;
+        }else{  
+            foundMatch = false;
+
         }
       }
     }
@@ -165,6 +168,9 @@ function updateGrid() {
 
     // Count the total number of gems
     var totalGems = document.querySelectorAll('.gem').length;
+
+
+    // FIX CODE BELOW
 
     // Fill the grid with new gems until the total number reaches 64
     while (totalGems < GRID_WIDTH * GRID_HEIGHT) {
