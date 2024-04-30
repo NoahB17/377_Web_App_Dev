@@ -17,18 +17,18 @@
   <script src="match.js"></script>
 
 <?php
-$connection = get_database_connection();
-$sql = '';
-if ( )
-{
-    $sql =<<<SQL
-    UPDATE high_score
-       SET  player_score
-     WHERE album_id = $id
-    SQL;
-}
+// $connection = getdatabaseconnection();
+//  $sql = '';
+// if ( )
+// {
+//     $sql =<<<SQL
+//     UPDATE high_score
+//        SET  player_score
+//      WHERE album_id = $id
+//     SQL;
+// }
 
-?>
+// ?>
 </body>
 
 

@@ -108,7 +108,6 @@ function swapGems(gem1, gem2) {
 //     gem2.style.backgroundColor = gem2.dataset.type;
 //   }
 }
-
 function checkForMatches() {
     foundMatch = false;
     // Check for horizontal matches
@@ -118,36 +117,32 @@ function checkForMatches() {
         const gem2 = document.querySelector(`[data-row='${row}'][data-col='${col + 1}']`);
         const gem3 = document.querySelector(`[data-row='${row}'][data-col='${col + 2}']`);
 
-        if (gem1.dataset.type == gem2.dataset.type && gem2.dataset.type == gem3.dataset.type) {
+        if (gem1 && gem2 && gem3 && gem1.dataset.type == gem2.dataset.type && gem2.dataset.type == gem3.dataset.type) {
           gem1.dataset.matched = true;
           gem2.dataset.matched = true;
           gem3.dataset.matched = true;
           foundMatch = true;
-        }else{  
-            foundMatch = false;
-
         }
       }
     }
-  
     // Check for vertical matches
     for (let col = 0; col < GRID_WIDTH; col++) {
-      for (let row = 0; row < GRID_HEIGHT - 2; row++) {
+        for (let row = 0; row < GRID_HEIGHT - 2; row++) {
         const gem1 = document.querySelector(`[data-row='${row}'][data-col='${col}']`);
         const gem2 = document.querySelector(`[data-row='${row + 1}'][data-col='${col}']`);
         const gem3 = document.querySelector(`[data-row='${row + 2}'][data-col='${col}']`);
-
-        if (gem1.dataset.type == gem2.dataset.type && gem2.dataset.type == gem3.dataset.type) {
-          gem1.dataset.matched = true;
-          gem2.dataset.matched = true;
-          gem3.dataset.matched = true;
-          foundMatch = true;
+    
+        if (gem1 && gem2 && gem3 && gem1.dataset.type == gem2.dataset.type && gem2.dataset.type == gem3.dataset.type) {
+            gem1.dataset.matched = true;
+            gem2.dataset.matched = true;
+            gem3.dataset.matched = true;
+            foundMatch = true;
         }
-      }
+        }
     }
   
     return foundMatch;
-  }
+}
 
 function updateScore() {
   score == SCORE_PER_GEM + score;
@@ -176,17 +171,24 @@ function updateGrid() {
     while (totalGems < GRID_WIDTH * GRID_HEIGHT) {
         const newGem = document.createElement('div');
         newGem.classList.add('gem');
-        newGem.dataset.row = Math.floor(totalGems / GRID_WIDTH);
-        newGem.dataset.col = totalGems % GRID_WIDTH;
+        const row = Math.floor(totalGems / GRID_WIDTH);
+        const col = totalGems % GRID_WIDTH;
+        newGem.dataset.row = row;
+        newGem.dataset.col = col;
         newGem.dataset.type = getRandomGemType();
         newGem.style.backgroundColor = newGem.dataset.type;
         newGem.addEventListener('click', () => selectGem(newGem));
         grid.appendChild(newGem);
         totalGems++;
+    
+        // Check if there are any gems above the current position
+        for (let r = row - 1; r >= 0; r--) {
+            const gemAbove = document.querySelector(`[data-row='${r}'][data-col='${col}']`);
+            if (!gemAbove) break; // No gem found above, stop checking
+            // Move gemAbove down one row
+            gemAbove.dataset.row = r + 1;
+        }
     }
-
-    // Clear matched data attribute
-    gems.forEach(gem => delete gem.dataset.matched);
 }
 // Initialize the game  
 
