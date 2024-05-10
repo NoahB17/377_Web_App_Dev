@@ -109,7 +109,7 @@ function swapGems(gem1, gem2) {
 //   }
 }
 function checkForMatches() {
-    foundMatch = false;
+    // foundMatch = false;
     // Check for horizontal matches
     for (let row = 0; row < GRID_HEIGHT; row++) {
       for (let col = 0; col < GRID_WIDTH - 2; col++) {
@@ -167,7 +167,7 @@ function updateGrid() {
 
     // FIX CODE BELOW
 
-    // Fill the grid with new gems until the total number reaches 64
+   // Fill the grid with new gems until the total number reaches 64
     while (totalGems < GRID_WIDTH * GRID_HEIGHT) {
         const newGem = document.createElement('div');
         newGem.classList.add('gem');
